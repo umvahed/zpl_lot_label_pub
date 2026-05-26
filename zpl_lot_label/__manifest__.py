@@ -38,7 +38,7 @@ line in the template to reference your field.
         'reports/action_report.xml',
     ],
     'images': ['static/description/banner.png'],
-    'price': 19.00,
+    'price': 10.00,
     'currency': 'EUR',
     'installable': True,
     'auto_install': False,

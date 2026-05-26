@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ZPL label template for stock.lot records.
+
+    Label layout (portrait, inverted):
+      - Barcode 1 (top centre):   lot.name
+      - Human-readable text:      lot.display_name
+      - Barcode 2 (lower right):  lot.ref if set, otherwise lot.name
+
+    To use a custom barcode field (e.g. a Studio or computed field on stock.lot),
+    change the t-value expression on the barcode_value line below.
+
+    ZPL coordinates are in dots at 203 dpi. Adjust ^FO values for your label size.
+    Test without a printer: paste the output into https://labelary.com/viewer.html
+-->
+<odoo>
+    <template id="label_lot_template">
+        <t t-foreach="docs" t-as="lot">
+            <t t-translation="off">
+^XA
+^POI
+^FWN
+^FO140,30^BY2
+^BCB,30,Y,N,N
+^FD<t t-out="lot['name']"/>^FS
+^FO260,0
+^A0B,15,15
+^FD<t t-out="lot['display_name']"/>^FS
+^FO435,140
+^A0B,12,20
+^FD<t t-out="lot['name']"/>^FS
+<t t-set="barcode_value" t-value="lot.get('ref') or lot.get('name', '')"/>
+^FO490,170
+^BCB,30,Y,N,N
+^FD<t t-out="barcode_value"/>^FS
+^XZ
+            </t>
+        </t>
+    </template>
+</odoo>

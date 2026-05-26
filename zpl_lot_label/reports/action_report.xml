@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_zpl_lot_label" model="ir.actions.report">
+        <field name="name">ZPL Lot Label</field>
+        <field name="model">stock.lot</field>
+        <field name="report_type">qweb-text</field>
+        <field name="report_name">zpl_lot_label.label_lot_template</field>
+        <field name="report_file">zpl_lot_label.label_lot_template</field>
+        <field name="print_report_name">'Label - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="stock.model_stock_lot"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

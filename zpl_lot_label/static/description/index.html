@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"/></head>
+<body>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan" style="color:#875A7B;">ZPL Lot Label</h2>
+    <h3 class="oe_slogan">Print Zebra barcode labels for stock lots directly from Odoo</h3>
+    <div class="oe_span12">
+      <p class="oe_mt32 text-center">
+        Adds a <strong>Print → ZPL Lot Label</strong> action to stock lot records.
+        Outputs raw <strong>ZPL (Zebra Printer Language)</strong> commands for
+        direct printing on any Zebra-compatible label printer — no PDF, no driver required.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan">Label layout</h2>
+    <div class="oe_span4">
+      <h3>Barcode 1 — Lot number</h3>
+      <p>Code 128 barcode of the lot name, printed at the top of the label.</p>
+    </div>
+    <div class="oe_span4">
+      <h3>Human-readable text</h3>
+      <p>Lot display name printed alongside the barcode for easy visual identification.</p>
+    </div>
+    <div class="oe_span4">
+      <h3>Barcode 2 — Internal reference</h3>
+      <p>Second Code 128 barcode using the lot's internal reference, or the lot name if no reference is set.</p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan">How it works</h2>
+    <div class="oe_span12">
+      <p>The report type is <code>qweb-text</code> — Odoo renders the template as plain text
+        (raw ZPL commands) and serves it directly. No PDF conversion. Works with:</p>
+      <ul>
+        <li>Browser-based ZPL print utilities (send raw output to printer port)</li>
+        <li>Direct IP printing to Zebra printers on your network</li>
+        <li>Any print service that accepts raw ZPL over TCP/IP (port 9100)</li>
+      </ul>
+      <p><strong>Test without a physical printer:</strong> Open Odoo, print a label,
+        copy the ZPL output and paste it into
+        <a href="https://labelary.com/viewer.html">labelary.com/viewer.html</a>
+        for an instant browser preview.</p>
+    </div>
+  </div>
+</section>
+
+<section class="oe_container oe_dark">
+  <div class="oe_row oe_spaced">
+    <h2 class="oe_slogan">Customisation</h2>
+    <div class="oe_span12">
+      <p>The label template uses standard ZPL commands. To adjust the layout for your
+        label size or printer DPI, edit <code>reports/label_template.xml</code> and
+        modify the <code>^FO</code> coordinate values.</p>
+      <p>If you use a custom barcode field on <code>stock.lot</code>, change the
+        <code>barcode_value</code> line in the template to reference your field.</p>
+      <p>ZPL coordinates are calculated at 203 dpi (standard Zebra printer resolution).</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

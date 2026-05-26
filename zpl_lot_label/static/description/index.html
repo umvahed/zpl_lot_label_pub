@@ -1,6 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"/></head>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>ZPL Lot Label</title>
+  <style>
+    body, p, li, td, th, div { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 15px; line-height: 1.6; }
+    h2.oe_slogan, h3.oe_slogan, h3 { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; }
+    code { font-size: 13px; }
+  </style>
+</head>
 <body>
 
 <section class="oe_container">
@@ -63,7 +71,8 @@
         modify the <code>^FO</code> coordinate values.</p>
       <p>If you use a custom barcode field on <code>stock.lot</code>, change the
         <code>barcode_value</code> line in the template to reference your field.</p>
-      <p>ZPL coordinates are calculated at 203 dpi (standard Zebra printer resolution).</p>
+      <p>ZPL coordinates are calculated at 203 dpi (standard Zebra printer resolution).
+        Scale <code>^FO</code> values by 1.48 for 300 dpi printers.</p>
     </div>
   </div>
 </section>
